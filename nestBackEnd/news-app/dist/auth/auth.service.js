@@ -33,7 +33,8 @@ let AuthService = class AuthService {
             return user;
         }
         catch (error) {
-            return { msg: 'user with that username already exist' };
+            console.log({ msg: 'user with that username already exist' });
+            throw new Error('user with that username already exist');
         }
     }
     async signIn(dto) {

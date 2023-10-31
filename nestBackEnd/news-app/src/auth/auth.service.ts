@@ -1,12 +1,13 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { AuthDto } from './dto/auth.dto';
+import { User } from '@prisma/client';
 import * as argon from 'argon2';
 @Injectable()
 export class AuthService {
   constructor(private readonly prismaService: PrismaService) { }
 
-  async signUp(dto: AuthDto) {
+  async signUp(dto: AuthDto): Promise<User> {
     const hash = await argon.hash(dto.password);
 
     try {
@@ -24,7 +25,8 @@ export class AuthService {
       console.timeEnd('test');
       return user;
     } catch (error) {
-      return { msg: 'user with that username already exist' };
+      console.log({ msg: 'user with that username already exist' });
+      throw new Error('user with that username already exist');
     }
   }
   async signIn(dto: AuthDto) {

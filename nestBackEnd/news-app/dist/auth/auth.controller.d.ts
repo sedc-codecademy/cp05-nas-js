@@ -11,8 +11,6 @@ export declare class AuthController {
         hash: string;
         firstName: string;
         lastName: string;
-    } | {
-        msg: string;
     }>;
     signIn(dto: AuthDto): Promise<number>;
     getUsers(): Promise<{
