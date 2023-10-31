@@ -22,18 +22,22 @@ export class FetchFeedsService {
   async getAndSortData() {
     const data = await this.fetchData();
 
-    for (const element of data.items) {
-      const title = element.title;
-      let description = element.description;
-      let content = element.content;
-      const imageUrl = element.enclosure.link;
+    try {
+      for (const element of data.items) {
+        const title = element.title;
+        let description = element.description;
+        let content = element.content;
+        const imageUrl = element.enclosure.link;
 
-      const patern = /<.*?>/g;
-      description = description.replace(patern, '').replace(/\n/g, '');
-      content = content.replace(patern, ''); //.replace(/\n/g, '');
+        const patern = /<.*?>/g;
+        description = description.replace(patern, '').replace(/\n/g, '');
+        content = content.replace(patern, ''); //.replace(/\n/g, '');
 
-      this.uniqueItems.add(title);
-      await this.saveToDb(title, description, content, imageUrl);
+        this.uniqueItems.add(title);
+        await this.saveToDb(title, description, content, imageUrl);
+      }
+    } catch {
+
     }
   }
 
