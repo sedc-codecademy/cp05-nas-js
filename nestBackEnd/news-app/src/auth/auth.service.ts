@@ -22,7 +22,6 @@ export class AuthService {
 
       delete user.hash;
 
-      console.timeEnd('test');
       return user;
     } catch (error) {
       console.log({ msg: 'user with that username already exist' });
@@ -35,16 +34,31 @@ export class AuthService {
         email: dto.email,
       },
     });
-    console.log(user);
+    //    console.log(user);
     if (!user) throw new ForbiddenException('user not found');
     const validatePass = await argon.verify(user.hash, dto.password);
 
     if (!validatePass) throw new ForbiddenException('invalid password');
 
-    return user.id;
+    return user;
+  }
+
+  async validateUser(email: string, password: string) {
+    console.log('inside validate');
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        email: email,
+      },
+    });
+
+    const validatePass = await argon.verify(user.hash, password);
+    if (validatePass) {
+      return user;
+    }
+    return null;
   }
 
   async getUsers() {
-    return this.prismaService.user.findMany();
+    return await this.prismaService.user.findMany();
   }
 }

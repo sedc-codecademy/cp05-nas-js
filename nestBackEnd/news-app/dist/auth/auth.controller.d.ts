@@ -12,7 +12,15 @@ export declare class AuthController {
         firstName: string;
         lastName: string;
     }>;
-    signIn(dto: AuthDto): Promise<number>;
+    signIn(dto: AuthDto): Promise<{
+        id: number;
+        createdAt: Date;
+        updatedAt: Date;
+        email: string;
+        hash: string;
+        firstName: string;
+        lastName: string;
+    }>;
     getUsers(): Promise<{
         id: number;
         createdAt: Date;

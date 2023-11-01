@@ -16,7 +16,7 @@ const prisma_service_1 = require("../prisma/prisma.service");
 let FetchFeedsService = class FetchFeedsService {
     constructor(prismaService) {
         this.prismaService = prismaService;
-        this.fetchInterval = 1 * 60 * 1000;
+        this.fetchInterval = 60 * 60 * 1000;
         this.uniqueItems = new Set();
         this.URL = 'https://api.rss2json.com/v1/api.json?rss_url=';
     }

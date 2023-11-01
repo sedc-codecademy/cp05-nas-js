@@ -29,7 +29,6 @@ let AuthService = class AuthService {
                 },
             });
             delete user.hash;
-            console.timeEnd('test');
             return user;
         }
         catch (error) {
@@ -43,16 +42,28 @@ let AuthService = class AuthService {
                 email: dto.email,
             },
         });
-        console.log(user);
         if (!user)
             throw new common_1.ForbiddenException('user not found');
         const validatePass = await argon.verify(user.hash, dto.password);
         if (!validatePass)
             throw new common_1.ForbiddenException('invalid password');
-        return user.id;
+        return user;
+    }
+    async validateUser(email, password) {
+        console.log('inside validate');
+        const user = await this.prismaService.user.findUnique({
+            where: {
+                email: email,
+            },
+        });
+        const validatePass = await argon.verify(user.hash, password);
+        if (validatePass) {
+            return user;
+        }
+        return null;
     }
     async getUsers() {
-        return this.prismaService.user.findMany();
+        return await this.prismaService.user.findMany();
     }
 };
 exports.AuthService = AuthService;
