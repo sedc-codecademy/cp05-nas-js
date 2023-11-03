@@ -1,0 +1,39 @@
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+
+}
+
+.card {
+    /* border: 1px solid red; */
+    /* display: flex; */
+    width: 30vw;
+    padding: 20px;
+    background-color: black !important;
+}
+
+.btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 30px;
+    /* width: fit-content; */
+    margin-left: 40%;
+}
+
+@media (max-width: 960px) {
+    .cardContainer {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .card {
+        width: 80vw;
+        margin-left: 10vw;
+    }
+}

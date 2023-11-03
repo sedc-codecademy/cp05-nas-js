@@ -1,0 +1,12 @@
+- za zacuvuvanje na vestite ke koristam prisma.create;
+- za formi mozam da koristam prisma.create.many ;
+
+  -pricina: prisma.createMany ja proveruva bazata za duplikati vo nasiot slucaj ja pinga
+    precesto;
+
+- todos: 
+  - auth on frontend;
+  - state management;
+  - pagination of backend;
+  - search functionality; 
+ 

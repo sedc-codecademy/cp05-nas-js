@@ -1,0 +1,105 @@
+.articleContainer {
+    margin-top: 100px;
+    margin-left: 30px;
+    width: 60vw;
+    border-right: 1px solid black;
+
+
+}
+
+.articleContainer h1 {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.articleContainer p {
+    font-size: 20px;
+    font-weight: 400;
+    width: 50vw;
+    text-align: justify;
+    margin-left: 30px;
+}
+
+.comments {
+    /* border: 1px solid black; */
+    margin-left: 100px;
+    width: fit-content;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/* .comments {
+    display: flex;
+    justify-content: space-around;
+} */
+
+.imgContainer {
+    display: flex;
+    gap: 50px;
+}
+
+.imgContainer p {
+    width: 20vw;
+    padding: 20px;
+}
+
+.image {
+    width: 30vw;
+
+}
+
+.articlePageContainer {
+    display: flex;
+    /* justify-content: space-around; */
+
+}
+
+
+.AnalyticalNote {
+    margin-top: 100px;
+    width: 30vw;
+    /* margin-right: 45; */
+    border: 2px solid white;
+    width: 35%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 81%;
+}
+
+/* .noteContainer {
+    width: 35vw;
+    border: 1px solid black;
+} */
+
+.AnalyticalNote h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.btns {
+    /* border: 1px solid black; */
+    /* padding: 20px; */
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-around;
+}
+
+.btns button {
+    border: 1px solid black;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: space-around;
+}
+
+.inputs {
+    border: 1px solid black;
+}
