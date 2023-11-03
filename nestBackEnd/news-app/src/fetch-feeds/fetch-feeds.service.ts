@@ -4,7 +4,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class FetchFeedsService {
   constructor(private readonly prismaService: PrismaService) { }
-  private readonly fetchInterval = 60 * 60 * 1000;
+  private readonly fetchInterval = 15 * 60 * 1000;
   private readonly uniqueItems: Set<string> = new Set<string>();
 
   URL = 'https://api.rss2json.com/v1/api.json?rss_url=';
@@ -35,12 +35,11 @@ export class FetchFeedsService {
           content = content.replace(patern, ''); //.replace(/\n/g, '');
 
           this.uniqueItems.add(title);
-          console.log(this.uniqueItems.size);
           await this.saveToDb(title, description, content, imageUrl);
         }
       }
-    } catch {
-
+    } catch (error) {
+      console.log(error);
     }
   }
 

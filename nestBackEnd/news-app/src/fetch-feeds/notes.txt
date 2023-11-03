@@ -3,3 +3,10 @@
 
   -pricina: prisma.createMany ja proveruva bazata za duplikati vo nasiot slucaj ja pinga
     precesto;
+
+- todos: 
+  - auth on frontend;
+  - state management;
+  - pagination of backend;
+  - search functionality; 
+ 

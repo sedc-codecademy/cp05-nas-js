@@ -16,7 +16,7 @@ const prisma_service_1 = require("../prisma/prisma.service");
 let FetchFeedsService = class FetchFeedsService {
     constructor(prismaService) {
         this.prismaService = prismaService;
-        this.fetchInterval = 60 * 60 * 1000;
+        this.fetchInterval = 15 * 60 * 1000;
         this.uniqueItems = new Set();
         this.URL = 'https://api.rss2json.com/v1/api.json?rss_url=';
     }
@@ -43,12 +43,12 @@ let FetchFeedsService = class FetchFeedsService {
                     description = description.replace(patern, '').replace(/\n/g, '');
                     content = content.replace(patern, '');
                     this.uniqueItems.add(title);
-                    console.log(this.uniqueItems.size);
                     await this.saveToDb(title, description, content, imageUrl);
                 }
             }
         }
-        catch {
+        catch (error) {
+            console.log(error);
         }
     }
     async saveToDb(title, description, content, imageUrl) {

@@ -1,10 +1,12 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { ServeNewsService } from './serve-news.service';
+import { AuthenticatedGuard } from 'src/auth/authenticated.guard';
 
 @Controller('news')
 export class ServeNewsController {
   constructor(private readonly news: ServeNewsService) { }
 
+  //  @UseGuards(AuthenticatedGuard)
   @Get()
   getArticles() {
     return this.news.fetchDb();
