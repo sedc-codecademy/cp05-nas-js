@@ -8,7 +8,8 @@ const Links = [
   { name: 'HOME', link: '/' },
   { name: 'WORLD NEWS', link: '/world' },
   { name: 'SPORT', link: '/sport' },
-  { name: 'LogIn', link: '/signOn' }
+  { name: 'LogIn', link: '/logIn' },
+  { name: 'JOIN US', link: '/create' }
 ]
 
 

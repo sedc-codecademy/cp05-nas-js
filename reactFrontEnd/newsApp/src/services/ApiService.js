@@ -35,4 +35,19 @@ export class GetNewsService {
     console.log(comments);
     return comments;
   };
+
+  static createUser = async (email, password) => {
+    const createUser = await fetch('http://localhost:3000/auth/signup', {
+      method: "POST",
+      mode: 'cors',
+      credentials: 'include',
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const result = await createUser.json();
+    console.log(result)
+    return result
+  }
 }
